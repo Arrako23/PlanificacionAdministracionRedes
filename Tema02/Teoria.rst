@@ -1,5 +1,8 @@
+2. NORMALIZACIÓN EN LAS REDES
+=============================
+
 Estándares y organismos de normalización
-========================================
+----------------------------------------
 
 Un estándar puede definir, por ejemplo, el tipo de conector a emplear, las tensiones e intensidades empleadas, el formato de los datos a enviar, etc. En resumen, **un estándar es un conjunto de normas, acuerdos y recomendaciones técnicas que regulan la transmisión de los sistemas de comunicación**. El empleo de estos estándares presenta las siguientes ventajas:
 
@@ -33,7 +36,7 @@ ITU (International Telecommunication Union)
 
 La organización ITU (UIT en castellano, Unión Internacional de Telecomunicaciones) es la organización más importante de las Naciones Unidas en lo que concierne a las tecnologías de la información. Esta organización representa un foco global para los gobiernos y el sector privado en el desarrollo de redes y servicios. ITU coordina el uso del espectro radioeléctrico, promoviendo la cooperación internacional para la asignación de órbitas de satélites, trabajando para mejorar las infraestructuras de comunicación mundiales, estableciendo estándares mundiales para la interconexión de un enorme rango de sistemas de comunicación, y haciendo frente a problemas actuales, como el cambio climático y la seguridad en el ciberespacio. Su sede está en Ginebra (Suiza) y está formada por 191 Estados miembros y más de 700 miembros del Sector y Asociados.
 
-Esta organización está compuesta por tres sectores o comités: 
+Esta organización está compuesta por tres sectores o comités:
 
 - **ITU-R** (anteriormente conocida como CCIR, Comité Consultivo Internacional de Radiocomunicaciones), que se encarga de promulgar estándares de comunicaciones que emplean el espectro electromagnético.
 
@@ -117,6 +120,28 @@ La arquitectura de una red viene definida por tres características fundamentale
 - **Método de acceso a la red**: todas las redes que poseen un medio compartido para transmitir la información, necesitan ponerse de acuerdo a la hora de enviar información, ya que no pueden hacerlo a la vez. En este caso, si dos estaciones transmiten a la vez en la misma frecuencia, la señal recogida en los receptores será una mezcla de las dos. Para las redes que no posean un medio compartido, el método de acceso al cable es trivial y no es necesario llevar a cabo ningún control para transmitir.
 - **Protocolos de comunicaciones**: son las **reglas y procedimientos utilizados en una red para realizar la comunicación**. Esas reglas tienen en cuenta el método utilizado para corregir errores, establecer una comunicación, etc.
 
+Arquitecturas basadas en niveles
+=================================
+
+Los primeros ingenieros de comunicaciones se dieron cuenta de que el proceso de comunicación entre computadoras se podía dividir en capas, y de que abordar cada una de estas capas por separado facilitaba enormemente la tarea de diseño de protocolos y estándares para redes. (Divide y venderás)
+
+Al ocuparse cada una de las capas de ciertos aspectos concretos del proceso de comunicación, se libera de tales aspectos al resto de las capas, simplificando así el diseño de la red.
+
+Dentro de cada nivel de la arquitectura existen diferentes servicios Así los servicios de los niveles superiores pueden elegir cualquiera de los ofrecido por las capas inferiores, dependiendo de la función que se quiers realizar. A la unqntectiura por niveles también se le llama Jerarquia de protocolos. Si los fabricantes quieren desarrollar productos compatibles, deben ajustarse a los protocolos definidos para esa red. Por lo tanto, en una jerarquia de protocolos se siguen las sigaientes reglas
+
+- Cada nivel dispone de un conjunto de servicios
+
+- Los servicios están definidos mediante protocolos estándares
+
+- Cada nivel se comunica solamente con el nivel inmediato superior y con ci inmediato inferior.
+
+- Cada uno de los niveles inferiores proporciona servicios a su nivel superior.
+
+**EJEMPLO ANTENAS LIBRO RA-MA**
+
+Problemas del diseño de la arquitectura de la red
+=================================================
+
 Aunque a primera vista parezca que el diseño de un sistema de comunicación parece simple, cuando se aborda resulta mucho más complejo, ya que es necesario resolver una serie de problemas. Algunos de los problemas más importantes a los que se enfrentan los diseñadores de redes de comunicaciones son:
 
 - **Encaminamiento**: cuando existen diferentes rutas posibles entre el origen y el destino (si la red tiene una topología de malla o irregular), se debe elegir una de ellas (normalmente, la más corta o la que tenga un tráfico menor).
@@ -127,10 +152,6 @@ Aunque a primera vista parezca que el diseño de un sistema de comunicación par
 - **Control de errores**: todas las redes de comunicación de datos transmiten la información con una pequeña tasa de error, que en ningún caso es nula. Esto se debe a que los medios de transmisión son imperfectos. Tanto emisor como receptor deben ponerse de acuerdo a la hora de establecer qué mecanismos se van a utilizar para detectar y corregir errores, y si se va a notificar al emisor que los mensajes llegan correctamente.
 - **Multiplexación**: en determinadas condiciones, la red puede tener tramos en los que existe un único medio de transmisión que, por cuestiones económicas, debe ser compartido por diferentes comunicaciones que no tienen relación entre sí. Así, el protocolo deberá asegurar que todas las comunicaciones que comparten el mismo medio no se interfieran entre sí.
 
-Los primeros ingenieros de comunicaciones se dieron cuenta de que el proceso de comunicación entre computadoras se podía dividir en capas, y de que abordar cada una de estas capas por separado facilitaba enormemente la tarea de diseño de protocolos y estándares para redes.
-
-Al ocuparse cada una de las capas de ciertos aspectos concretos del proceso de comunicación, se libera de tales aspectos al resto de las capas, simplificando así el diseño de la red.
-
 Modelo de referencia OSI y arquitectura TCP/IP
 ----------------------------------------------
 
@@ -139,7 +160,7 @@ Niveles y equivalencia
 
 .. image:: images/tema02-000.png
 
-.. note:: 
+.. note::
 
    En realidad la arquitectura TCP/IP es una arquitectura de 4 capas:
 
@@ -155,6 +176,18 @@ A mediados de los años setenta empezaron a aparecer los primeros estándares pa
 También durante la década de los setenta, **DARPA** evolucionó su red ARPANET y dio origen a la pila de protocolos TCP/IP, que, por su sencillez y su visión más práctica, empezó a ganar popularidad. TCP/IP acabó convirtiéndose en el estándar de facto de arquitectura en las redes de ordenadores, desbancando así al modelo OSI.
 
 El modelo OSI, sin embargo, continúa siendo de gran importancia, ya que nos permite describir y comprender fácilmente la base conceptual del resto de arquitecturas de red.
+
+¿Cómo llegó la ISO a definir esta arquitectura de siete niveles partiendo desde cerio?¿Cuáles fueron sus principios teóricos?
+
+- Cada capa de la arquitectura está pensada para realizar una función bien definida.
+- El numero de niveles debe ser suficiente para que no se agrupen funciones distintas, pero no tan grande que haga la arquitectura inmanejable.
+- Debe crearse una nueva capa siempre que se necesite realizar una función bien diferenciada del resto.
+- Las divisiones en las capas deben establecerse de forma que se minimice el flujo de información entre ellas, es decir, que la interfaz sea más sencilla.
+- Permitir que las modificaciones de funciones o protocolos que se realicen en una capa no afecten a los niveles contiguos.
+- Utilizar la experiencia de protocolos anteriores. Las fronteras entre niveles deben situarse donde la experiencia ha demostrado que son convenientes.
+- Cada nivel debe interaccionar únicamente con los niveles contiguos a él (es decir, el superior y el inferior), La función de cada capa se debe elegir pensando en la definición de protocolos estandarizados internacionalmente.
+
+OSI está definido más bien como modelo, y no como arquitectura, La razón principal es que la IS0 definió solamente la función general que debe realizar cada capa, pero no mencionó en absoluto los servicios y protocolos que se deben usar en cada una de ellas. Esto quiere decir que, al contrario que el resto de arquitecturas de redes, el modelo OSI se definió antes de que se diseñaran los protocolos. Recuérdese la definición de arquitectura que aparece en el apartado anterior
 
 Niveles OSI
 ------------
@@ -200,8 +233,48 @@ Aplicación
 
 Esta capa proporciona un medio a los programas de aplicación para que accedan al entorno OSI. Se considera que residen en esta capa las aplicaciones de uso general como transferencia de ficheros, correo electrónico y acceso terminal a computadores remotos. **Proporciona un servicio al usuario final**.
 
+El modelo Osi no es un modelo perfecto. Incluso para algunos es un mal diseño. Lo más importante y por lo que cobra importancia es en cuanto se refiere a las capas. Por otro lado, todas las capas no tienen la misma carga de trabajo. Hay capas que están más libres (sesión y presentación) y otras capas inferiores están más saturadas.
+Otro eejmplo que demuestra que el modelo OSI no es perfecto es que hay muchas funciones que se repiten en todas las capas, lo que hace que muchso servicios y programas estén duplicados.
+
 Arquitectura TCP/IP
 --------------------
+
+TCP/IP se suele confundir muchas veces con un protocolo de comunicaciones concreto, cuando, en realidad, es una compleja arquitectura de red que incluye varios de ellos, apilados por capas. Es, sin lugar a dudas, la más utilizada del mundo, ya que es la base de comunicación de Internet y también se utiliza ampliamente en distintas versiones del sistema operativo Unix Linux.
+
+En el año 1973, el DoD (Departamento de Defensa de Estados Unidos) inició un programa de investigación para el desarrollo de tecnologias de comunicación de redes de transmisión de datos. El objetivo fundamental era desarrollar una red de comunicación que cumpliera las siguientes características:
+
+- Permita interconectar redes diferentes. Esto quiere decir que la red en general puede estar formada por tramos que usan tecnología de transmisión diferente.
+
+- Sea tolerante a fallos. El DoD deseaba una red que fuera capaz de soportar ataques terroristas o incluso alguna guerra nuclear sin perderse datos y manteniendo las comunicaciones establecidas.
+
+- Permita el uso de aplicaciones diferentes: transferencia de archivos, comunicación en tiempo real, etc.
+
+Todos estos objetivos implicaron el diseño de una red con topologia irregular donde la información se fragmentaba para seguir rutas diferentes hacia el destinatario. Si alguna de esas rutas fallaba repentinamente, la información podía seguir rutas alternativas. Asi, surgieron dos redes distintas una dedicada a la investigación. ARPANET. y otra de uso exclusivamente militar, MILNET.
+
+.. image:: images/tema02-033.PNG
+
+.. note::
+
+   Ésta es la arquitectura real de la arquitectura TCP/IP
+
+Sabiendo que TCP/IP sólo tiene cuatro capas pasamos a definirlas
+
+Capa de subred
+++++++++++++++
+El modelo no da mucha información de esta capa y solamente se especifica que debe existir algun protocolo que conecta la estación con la red. La razón fundamental es que, como TCP/IP se disehó para su funcionamiento sobre redes diferentes, esta capa depende de la tecnologia utilizada y no se especifica de antemano
+
+Capa de interred
+++++++++++++++++
+Esta capa es la más importante de la arquitectura y su misión consiste en permitir que las estaciones envien información (paquetes) a la red y los hagan viajar de forma independiente hacia su destino. Durante ese viaje, los paquetes pueden atravesar redes diferentes y llegar desordenados. Esta capa no se responsabiliza de la tarea de ordenar de nuevo los mensajes en el destino. El protocolo más importante de esta capa se llama IP (Internet Protocol o Protocolo de Interred). aunque también existen otros protocolos.
+
+Capa de transporte
+++++++++++++++++++
+Esta cumple la función de establecer una conversación entre el origen y el destino, de igual forma que hace la capa de transporte en el modelo OSI. Puesto que las capas inferiores no se responsabilizan del control de errores ni de la ordenación de los mensajes, ésta debe realizar todo ese trabajo. Aquí también se han definido varios protocolos, entre los que destacan *TCP* (Transmission Control Protocol o Protocolo de Control de la Transmisión), orientado a la conexión y fiable, y *UDP* (User Datagram Protocol o Protocolo de Datagrama de Usuario). no orientado a la conexión y no fiable.
+
+Capa de aplicación
+++++++++++++++++++
+Esta capa contiene, al igual que la capa de aplicación de OSI, todos los protocolos de alto nivel que utilizan los programas para comunicarse. Aqui se encuentra el protocolo de terminal virtual (TELNET), el de transferencia de archivos (FTP), el protocolo HTTP que usan los navegadores para recuperar páginas en la World Wide Web, etc.
+
 
 .. image:: images/tema02-001.png
 
@@ -234,8 +307,8 @@ PDUs de TCP/IP
 En la arquitectura TCP/IP cada PDU recibe un nombre específico:
 
 - Capa de aplicación: **Datos**
-- Capa de transporte: **Segmentos** 
-- Capa de red: **Datagramas**
+- Capa de transporte: **Segmentos**
+- Capa de red: **Paquetes**
 - Capa de acceso a la red: **Tramas**
 - Capa física: Flujo de bits
 
@@ -248,6 +321,12 @@ Como se observa en las PDUs, éstas están formadas por una cabecera propia de c
 El resultado de todo esto es que los datos originales cada vez poseen más cabeceras (una por cada capa) a medida que descienden por la pila.
 
 En el equipo destino se irán quitando las cabeceras en orden inverso a como se añadieron. Cada capa leerá la cabecera que contiene los datos de control destinados a ella.
+
+Ejemplo navegar por internet TCP/IP
++++++++++++++++++++++++++++++++++++
+.. image:: images/web-tcpip.PNG
+
+`Packet tracer modelos OSI/TCP-IP <http://itroque.edu.mx/cisco/cisco1/course/module3/3.2.4.6/3.2.4.6.html>`_
 
 Componentes de una red
 =======================
@@ -402,7 +481,7 @@ Conmutación de paquetes
 
 Se trata del procedimiento mediante el cual, cuando un nodo quiere enviar un mensaje a otro, lo divide en paquetes. Cada paquete es enviado por el medio con información de cabecera. En cada nodo intermedio por el que pasa el paquete se detiene el tiempo necesario para procesarlo y decidir el siguiente nodo al cual enviarlo. Así sucesivamente hasta el destino. Los paquetes pueden perderse o llegar en distinto orden.
 
-Los distintos paquetes de un mismo mensaje pueden seguir caminos distintos hasta su destino. **Internet** es un ejemplo de conmutación de paquetes. 
+Los distintos paquetes de un mismo mensaje pueden seguir caminos distintos hasta su destino. **Internet** es un ejemplo de conmutación de paquetes.
 
 .. image:: images/tema02-021.png
 
